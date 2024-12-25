@@ -80,3 +80,14 @@ p {
     background-color: #555;
 }
 
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.logo img {
+    width: 70px;
+    height: auto;
+    cursor: pointer;
+}    
