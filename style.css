@@ -207,3 +207,48 @@ a.button2:hover::before {
         font-size: 3vw;
     }
 }
+
+
+/* Estilos do menu suspenso */
+.dropdown {
+    position: absolute; /* Posiciona em relação ao contêiner pai */
+    top: 20px; /* Distância do topo */
+    right: 180px; /* Distância da esquerda */
+}
+
+.dropbtn {
+    background-color: #af4c4c00; /* Cor do botão */
+    color: rgb(0, 0, 0); /* Cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border: none; /* Sem borda */
+    cursor: pointer; /* Cursor de mão */
+}
+
+.dropdown-content {
+    display: none; /* Esconde o conteúdo por padrão */
+    position: absolute; /* Posiciona o conteúdo em relação ao botão */
+    background-color: #f9f9f9; /* Cor de fundo */
+    min-width: 160px; /* Largura mínima */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra */
+    z-index: 1; /* Coloca o menu acima de outros elementos */
+}
+
+.dropdown-content a {
+    color: black; /* Cor do texto */
+    padding: 12px 16px; /* Espaçamento interno */
+    text-decoration: none; /* Remove sublinhado */
+    display: block; /* Faz os links ocuparem toda a largura */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Mostra o conteúdo ao passar o mouse */
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #252525ad; /* Cor do botão ao passar o mouse */
+}

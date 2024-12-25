@@ -77,40 +77,8 @@ body {
     background-color: #555;
 }
 
-/* Rodapé */
-.footer {
-    position: relative;
-    width: 100%;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
 
-/* Marca d'água */
-.watermark-text {
-    position: absolute;
-    bottom: 10px; /* Ajuste a distância do rodapé */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.5); /* Transparência para parecer uma marca d'água */
-    text-align: center;
-    font-style: italic;
-}
 
-/* Para que a marca d'água fique visível em todas as resoluções */
-@media (max-width: 768px) {
-    .watermark-text {
-        font-size: 0.8em;
-    }
-}
-
-@media (max-width: 480px) {
-    .watermark-text {
-        font-size: 0.7em;
-    }
-}
 
 
 /* Estilos para dispositivos móveis */
