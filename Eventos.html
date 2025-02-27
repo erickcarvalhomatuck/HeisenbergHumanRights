@@ -56,6 +56,7 @@
         tr:hover {
             background-color: #f1f1f1;
         }
+
         .logo {
             position: absolute;
             top: 10px;
@@ -66,7 +67,7 @@
             width: 70px;
             height: auto;
             cursor: pointer;
-        }    
+        }
 
         .button {
             display: inline-block;
@@ -83,6 +84,65 @@
             background-color: #555;
         }
 
+        /* Estilos para o pop-up */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh; /* Altura máxima de 80% da janela */
+            overflow-y: auto; /* Adiciona rolagem se o conteúdo for muito longo */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+            background: #f1f1f1;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .popup-close:hover {
+            background: #ddd;
+        }
+
+        #popup-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        #popup-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
         @media (max-width: 600px) {
             table {
                 font-size: 0.9rem;
@@ -91,12 +151,24 @@
             h1 {
                 font-size: 2rem;
             }
+
+            .popup-content {
+                padding: 20px;
+            }
+
+            #popup-title {
+                font-size: 1.5rem;
+            }
+
+            #popup-text {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="logo">
-        <a href="index.html">
+        <a href='/'>
             <img src="logofdsm.png" alt="Logo">
         </a>
     </div>
@@ -112,8 +184,10 @@
                     <th>Análise Breve</th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr>
+                    <tr data-event="1"></tr>
                     <td>1</td>
                     <td>Conflito Armado</td>
                     <td>Guerra na Síria</td>
@@ -121,6 +195,7 @@
                     <td>Direitos humanos usados seletivamente para justificar intervenções, enquanto zonas sem relevância estratégica foram negligenciadas.</td>
                 </tr>
                 <tr>
+                    <tr data-event="2"></tr>
                     <td>2</td>
                     <td>Crise Migratória</td>
                     <td>Refugiados da Guerra na Síria</td>
@@ -128,6 +203,7 @@
                     <td>Políticas migratórias rígidas priorizaram interesses econômicos e eleitorais sobre o direito à proteção de refugiados.</td>
                 </tr>
                 <tr>
+                    <tr data-event="3"></tr>
                     <td>3</td>
                     <td>Trabalho Análogo à Escravidão</td>
                     <td>Exploração de trabalhadores na indústria têxtil brasileira</td>
@@ -135,6 +211,7 @@
                     <td>Casos de trabalho análogo ao escravo foram identificados em empresas como a M. Officer no Brasil, onde trabalhadores foram submetidos a condições degradantes e jornadas exaustivas.</td>
                 </tr>
                 <tr>
+                    <tr data-event="4"></tr>
                     <td>4</td>
                     <td>Evento Climático</td>
                     <td>Furacão Maria em Porto Rico</td>
@@ -142,6 +219,7 @@
                     <td>Apesar de ser território dos EUA, Porto Rico enfrentou uma resposta lenta e insuficiente após o desastre, evidenciando disparidades no tratamento de regiões menos influentes politicamente.</td>
                 </tr>
                 <tr>
+                    <tr data-event="5"></tr>
                     <td>5</td>
                     <td>Genocídio</td>
                     <td>Crise dos Rohingya em Mianmar</td>
@@ -149,6 +227,7 @@
                     <td>Resposta internacional limitada devido à falta de interesse econômico ou estratégico na região.</td>
                 </tr>
                 <tr>
+                    <tr data-event="6"></tr>
                     <td>6</td>
                     <td>Crise Migratória</td>
                     <td>Migrantes na fronteira EUA-México</td>
@@ -156,6 +235,7 @@
                     <td>Direitos humanos ignorados em centros de detenção, com políticas motivadas por segurança nacional e interesses políticos.</td>
                 </tr>
                 <tr>
+                    <tr data-event="7"></tr>
                     <td>7</td>
                     <td>Evento Climático</td>
                     <td>Furacão Dorian em Bahamas</td>
@@ -163,6 +243,7 @@
                     <td>Ajuda internacional limitada e condicionada à ausência de relevância estratégica para países doadores.</td>
                 </tr>
                 <tr>
+                    <tr data-event="8"></tr>
                     <td>8</td>
                     <td>Evento Climático</td>
                     <td>Ciclone Idai em Moçambique</td>
@@ -170,6 +251,7 @@
                     <td>Resposta tardia e insuficiente devido ao foco em áreas com maior potencial de exploração de recursos naturais.</td>
                 </tr>
                 <tr>
+                    <tr data-event="8"></tr>
                     <td>9</td>
                     <td>Evento Climático</td>
                     <td>Incêndios florestais na Austrália</td>
@@ -177,6 +259,7 @@
                     <td>Os incêndios de grandes proporções destruíram vastas áreas e habitats. A ajuda internacional foi recebida, mas predominantemente de países com interesses ambientais e econômicos na região.</td>
                 </tr>
                 <tr>
+                    <tr data-event="10"></tr>
                     <td>10</td>
                     <td>Evento Climático</td>
                     <td>Ciclone Amphan no Sudeste Asiático</td>
@@ -184,6 +267,7 @@
                     <td>O ciclone afetou milhões em Bangladesh e Índia. A ajuda internacional foi limitada, com respostas mais robustas de países com interesses econômicos na região.</td>
                 </tr>
                 <tr>
+                    <tr data-event="11"></tr>
                     <td>11</td>
                     <td>Conflito Armado</td>
                     <td>Conflito na Etiópia - Região de Tigré</td>
@@ -191,6 +275,7 @@
                     <td>A falta de relevância estratégica atrasou a resposta internacional, apesar de massacres e crises humanitárias graves.</td>
                 </tr>
                 <tr>
+                    <tr data-event="12"></tr>
                     <td>12</td>
                     <td>Conflito Armado e Retirada Militar</td>
                     <td>Retirada das tropas dos EUA no Afeganistão</td>
@@ -198,6 +283,7 @@
                     <td>Direitos humanos abandonados após a retirada militar, revelando sua instrumentalização para justificar ocupação anterior.</td>
                 </tr>
                 <tr>
+                    <tr data-event="13"></tr>
                     <td>13</td>
                     <td>Evento Climático e Crise Social</td>
                     <td>Haiti - Crise Política e Terremotos</td>
@@ -205,6 +291,7 @@
                     <td>Ajuda internacional foi condicionada à estabilidade política, enquanto empresas lucraram com a reconstrução.</td>
                 </tr>
                 <tr>
+                    <tr data-event="14"></tr>
                     <td>14</td>
                     <td>Evento Climático</td>
                     <td>Inundações na Europa Ocidental</td>
@@ -212,6 +299,7 @@
                     <td>Fortes chuvas causaram inundações devastadoras na Alemanha, Bélgica e Países Baixos. A resposta internacional foi limitada, com ajuda concentrada nos países afetados, sem mobilização significativa de nações externas.</td>
                 </tr>
                 <tr>
+                    <tr data-event="15"></tr>
                     <td>15</td>
                     <td>Desigualdade na Saúde</td>
                     <td>Acesso às vacinas de COVID-19</td>
@@ -219,6 +307,7 @@
                     <td>Países ricos monopolizaram a distribuição de vacinas, marginalizando nações em desenvolvimento, especialmente na África.</td>
                 </tr>
                 <tr>
+                    <tr data-event="16"></tr>
                     <td>16</td>
                     <td>Crimes de Guerra</td>
                     <td>Estupros e torturas na guerra da Ucrânia</td>
@@ -226,6 +315,7 @@
                     <td>Relatórios da ONU e de organizações de direitos humanos documentaram casos de violência sexual e tortura cometidos por forças russas contra civis ucranianos, incluindo mulheres e homens.</td>
                 </tr>
                 <tr>
+                    <tr data-event="17"></tr>
                     <td>17</td>
                     <td>Conflito Armado</td>
                     <td>Conflito na Ucrânia</td>
@@ -233,6 +323,7 @@
                     <td>Resposta rápida e significativa devido à posição geopolítica estratégica da Ucrânia, contrastando com conflitos menos relevantes geopoliticamente.</td>
                 </tr>
                 <tr>
+                    <tr data-event="18"></tr>
                     <td>18</td>
                     <td>Evento Climático</td>
                     <td>Seca no Chifre da África</td>
@@ -240,6 +331,7 @@
                     <td>Falta de interesse econômico global resultou em auxílio humanitário desproporcional, agravando a crise.</td>
                 </tr>
                 <tr>
+                    <tr data-event="18"></tr>
                     <td>19</td>
                     <td>Conflito Armado</td>
                     <td>Conflito na Faixa de Gaza</td>
@@ -247,6 +339,7 @@
                     <td>Resposta internacional condicionada pela influência política e econômica dos aliados na região.</td>
                 </tr>
                 <tr>
+                    <tr data-event="20"></tr>
                     <td>20</td>
                     <td>Evento Climático</td>
                     <td>Enchente no Rio Grande do Sul</td>
@@ -254,6 +347,7 @@
                     <td>Ajuda internacional direcionada apenas ao Brasil, motivada por interesses políticos e econômicos na rica região afetada.</td>
                 </tr>
                 <tr>
+                    <tr data-event="21"></tr>
                     <td>21</td>
                     <td>Exploração Econômica</td>
                     <td>Mão de obra em fábricas na Ásia</td>
@@ -261,13 +355,14 @@
                     <td>Direitos humanos ignorados em favor de lucros empresariais, prejudicando trabalhadores em países como Bangladesh e Vietnã.</td>
                 </tr>
                 <tr>
+                    <tr data-event="22"></tr>
                     <td>22</td>
                     <td>Exploração de Recursos Naturais</td>
                     <td>Desmatamento na Amazônia</td>
                     <td>Contínuo</td>
                     <td>Exploração de territórios indígenas motivada por lucros econômicos, ignorando os direitos dessas populações.</td>
                 </tr>
-                <tr>
+                <tr data-event="23">
                     <td>23</td>
                     <td>Exploração de Recursos Naturais</td>
                     <td>Mineração de cobalto na República Democrática do Congo</td>
@@ -277,6 +372,83 @@
             </tbody>
         </table>
     </div>
-    <a href="Super.html" class="button">Voltar</a>
+    <a class='button' href='/super'>Voltar</a>
+
+    <!-- Pop-up -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+            <span class="popup-close" id="close-popup">&times;</span>
+            <h2 id="popup-title">Evento 23: Mineração de Cobalto na RDC</h2>
+            <div id="popup-text">
+                <!-- Conteúdo do pop-up será inserido aqui via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Conteúdo do pop-up para os eventos
+        const eventContent = {
+            1: `
+                <p><strong>Evento 1: Guerra na Síria</strong></p>
+                <p>Direitos humanos usados seletivamente para justificar intervenções, enquanto zonas sem relevância estratégica foram negligenciadas.</p>
+            `,
+            2: `
+                <p><strong>Evento 2: Refugiados da Guerra na Síria</strong></p>
+                <p>Políticas migratórias rígidas priorizaram interesses econômicos e eleitorais sobre o direito à proteção de refugiados.</p>
+            `,
+            3: `
+                <p><strong>Evento 3: Exploração de trabalhadores na indústria têxtil brasileira</strong></p>
+                <p>Casos de trabalho análogo ao escravo foram identificados em empresas como a M. Officer no Brasil, onde trabalhadores foram submetidos a condições degradantes e jornadas exaustivas.</p>
+            `,
+            23: `
+                <p><strong>Introdução: O Paradoxo dos Direitos Humanos e os Interesses Econômicos</strong></p>
+                <p>A mineração de cobalto na República Democrática do Congo (RDC) exemplifica o abismo entre a teoria e a prática dos direitos humanos. Enquanto tratados internacionais condenam o trabalho infantil e condições degradantes de trabalho, a realidade no setor extrativo congolês demonstra que os interesses econômicos e políticos prevalecem sobre tais normas. A RDC, apesar de possuir 60% das reservas mundiais de cobalto, continua sendo um dos países mais pobres do mundo, com crianças sendo exploradas em minas para abastecer cadeias produtivas globais.</p>
+                <p><strong>1. A Mineração de Cobalto na RDC: Contexto e Impacto</strong></p>
+                <p>A RDC é um dos países mais ricos em recursos naturais, mas a instabilidade política, a corrupção e a falta de infraestrutura perpetuam a exploração da mão de obra infantil. Empresas transnacionais, sobretudo chinesas, têm dominado a extração de minerais essenciais para a fabricação de baterias de veículos elétricos, smartphones e outros dispositivos tecnológicos.</p>
+                <p><strong>2. Direitos Humanos ou Direitos "Comprados"?</strong></p>
+                <p>Os direitos humanos são frequentemente apresentados como universais e inalienáveis. No entanto, a realidade demonstra que sua aplicação depende dos interesses econômicos e políticos das grandes potências.</p>
+                <p><strong>3. A Responsabilidade das Empresas e a Impunidade Estrutural</strong></p>
+                <p>Empresas transnacionais argumentam que não possuem controle total sobre suas cadeias de suprimento. Contudo, a pesquisa evidencia que elas desconsideram as condições degradantes em que crianças trabalham.</p>
+                <p><strong>4. Conclusão: O Custo Humano do Progresso Tecnológico</strong></p>
+                <p>A mineração de cobalto na RDC revela que direitos humanos não são gratuitos, mas sim negociáveis dentro da lógica do capitalismo global. A exploração de trabalho infantil persiste porque há uma demanda contínua e porque os mecanismos de responsabilização são insuficientes.</p>
+                <p><strong>5. Análise: O real abismo</strong></p>
+                <p>Em análise do que foi dito é perceptível que o sistema de aplicação falho não se configura apenas nas estruturas da sociedade brasileira como também mundialmente, em que os interesses econômicos sobressaem aos interesses sociais básicos (direitos humanos) Porem tal situação se torna presente e comparativamente semelhante as explorações ocorridas na África na era colonial Brasileira, o que comprova a ideia de que se trata de um fato histórico desde antes as origens da legislação de proteção aos direitos humanos.</p>
+                <p><strong>6. Bibliografia Base</strong></p>
+                <p>Para uma análise mais profunda, consulte as seguintes fontes:</p>
+                <p><a href="https://repositorio.ufsm.br/handle/1/29017" target="_blank">Artigo UFMS</a></p>
+                <p><a href="https://www.dw.com/pt-002/rdc-faltam-direitos-e-transpar%C3%AAncia-nas-minas-de-cobalto/a-68629597" target="_blank">RDC: Faltam direitos e transparência nas minas de cobalto</a></p>
+                <p><a href="https://noticias.uol.com.br/ultimas-noticias/rfi/2019/12/17/apple-google-e-tesla-sao-acusadas-de-incentivar-trabalho-infantil-no-congo.html" target="_blank">Apple, Google e Tesla são acusadas de incentivar trabalho infantil no Congo</a></p>
+                <p><a href="https://www.ihu.unisinos.br/categorias/588786-congo-onde-as-criancas-acabam-nas-minas" target="_blank">Congo, onde as crianças acabam nas minas</a></p>
+            `
+        };
+
+        // Seleciona a tabela e adiciona um evento de clique
+        const tableRows = document.querySelectorAll("tbody tr");
+        const popup = document.getElementById("popup");
+        const popupText = document.getElementById("popup-text");
+        const closePopup = document.getElementById("close-popup");
+
+        tableRows.forEach(row => {
+            row.addEventListener("click", () => {
+                const eventId = row.getAttribute("data-event");
+                if (eventContent[eventId]) {
+                    popupText.innerHTML = eventContent[eventId];
+                    popup.style.display = "flex";
+                }
+            });
+        });
+
+        // Fecha o pop-up ao clicar no botão de fechar
+        closePopup.addEventListener("click", () => {
+            popup.style.display = "none";
+        });
+
+        // Fecha o pop-up ao clicar fora da área do conteúdo
+        popup.addEventListener("click", (e) => {
+            if (e.target === popup) {
+                popup.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
