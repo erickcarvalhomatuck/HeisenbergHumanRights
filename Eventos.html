@@ -323,16 +323,16 @@
                     <td>2022-presente</td>
                     <td>Resposta rápida e significativa devido à posição geopolítica estratégica da Ucrânia, contrastando com conflitos menos relevantes geopoliticamente.</td>
                 </tr>
-                <tr>
-                    <tr data-event="18"></tr>
+
+                <tr data-event="18">
                     <td>18</td>
                     <td>Evento Climático</td>
                     <td>Seca no Chifre da África</td>
                     <td>2022-2023</td>
-                    <td>Falta de interesse econômico global resultou em auxílio humanitário desproporcional, agravando a crise.</td>
-                </tr>
+                    <td>Falta de inte
+
                 <tr>
-                    <tr data-event="18"></tr>
+                    <tr data-event="19"></tr>
                     <td>19</td>
                     <td>Conflito Armado</td>
                     <td>Conflito na Faixa de Gaza</td>
@@ -375,14 +375,12 @@
     </div>
     <a class='button' href='/super'>Voltar</a>
 
-    <!-- Pop-up -->
+
     <div class="popup-overlay" id="popup">
         <div class="popup-content">
             <span class="popup-close" id="close-popup">&times;</span>
-            <h2 id="popup-title">Evento 23: Mineração de Cobalto na RDC</h2>
-            <div id="popup-text">
-                <!-- Conteúdo do pop-up será inserido aqui via JavaScript -->
-            </div>
+            <h2 id="popup-title"></h2>
+            <p id="popup-text"></p>
         </div>
     </div>
 
@@ -400,6 +398,32 @@
             3: `
                 <p><strong>Evento 3: Exploração de trabalhadores na indústria têxtil brasileira</strong></p>
                 <p>Casos de trabalho análogo ao escravo foram identificados em empresas como a M. Officer no Brasil, onde trabalhadores foram submetidos a condições degradantes e jornadas exaustivas.</p>
+            `,
+            18: `
+                <strong>Seca no Chifre da África (2022-2023)</strong><br><br>
+                A seca no Chifre da África entre 2022 e 2023 foi uma das piores já registradas, levando milhões à fome. 
+                Apesar da gravidade da crise, a ajuda humanitária internacional foi insuficiente devido à falta de interesses econômicos na região.<br><br>
+
+                <p><strong>A Seca no Chifre da África: Impacto e Devastação</strong></p>
+                <p>A região do Chifre da África, que inclui países como Somália, Etiópia e Quênia, experimentou uma seca prolongada devido ao fracasso consecutivo de cinco estações chuvosas. Como consequência:</p>
+                <p> - Mais de 36 milhões de pessoas enfrentaram insegurança alimentar severa.</p>
+                <p> - A Somália chegou à beira da fome, com cerca de 1,8 milhão de crianças em risco de desnutrição grave.</p>
+                <p> - Milhares de pastores e agricultores perderam seus meios de subsistência, levando ao deslocamento forçado de milhões.</p> 
+                <p>Apesar da gravidade da situação, a ajuda humanitária foi lenta e insuficiente. Enquanto conflitos armados e desastres naturais em outras regiões mobilizaram bilhões em doações e campanhas internacionais, a crise no Chifre da África permaneceu amplamente negligenciada.</p>
+                <p><strong>O Desinteresse Econômico e a Assistência Humanitária Seletiva</strong></p>
+                <p>A resposta fraca à crise da seca ilustra um padrão histórico: a assistência humanitária tende a ser proporcional ao interesse econômico ou estratégico das potências globais. O Chifre da África, embora geopoliticamente relevante, não oferece o mesmo apelo econômico de outras regiões.</p>
+                <p>Conforme visto em crises passadas, o apoio humanitário internacional é muitas vezes condicionado por fatores como:</p>
+                <p> - Reservas de recursos naturais: regiões ricas em petróleo, gás ou minerais estratégicos recebem mais atenção.</p>
+                <p> - Interesses políticos e militares: conflitos em áreas estratégicas ou próximas a aliados costumam mobilizar mais recursos.</p>
+                <p> - Pressão midiática e engajamento popular: desastres que afetam populações mais visíveis para o Ocidente tendem a gerar mais mobilização.</p>
+                <p>A crise da Ucrânia, por exemplo, recebeu um volume recorde de assistência internacional e apoio militar, enquanto milhões de africanos passaram fome sem a mesma resposta enérgica.</p>                
+                <p><strong> O Custo Humano da Indiferença Global</strong></p>
+                <p>A inação diante da seca no Chifre da África resultou em consequências catastróficas. A fome severa e a desnutrição levaram a um aumento das mortes infantis, enquanto o deslocamento forçado gerou novas crises humanitárias em campos de refugiados superlotados. Além disso, grupos extremistas como Al-Shabaab exploraram o vácuo de assistência para recrutar jovens desesperados, ampliando a instabilidade na região.</p>
+                <p>A seca expôs, mais uma vez, a falha estrutural do sistema humanitário global: direitos humanos e ajuda humanitária são distribuídos de forma desigual, de acordo com interesses políticos e econômicos.</p>
+                <p><strong>Conclusão: Direitos Humanos Como Privilégio, Não Como Regra</strong></p>
+                <p>A seca no Chifre da África entre 2022 e 2023 reforça a tese de que os direitos humanos não são universais e gratuitos, mas sim seletivos e condicionados a interesses estratégicos. Milhões sofreram não apenas por causa da seca, mas devido à apatia global e à ausência de um compromisso genuíno com a dignidade humana.</p>
+
+
             `,
             23: `
                 <p><strong>Introdução: O Paradoxo dos Direitos Humanos e os Interesses Econômicos</strong></p>
@@ -423,9 +447,9 @@
             `
         };
 
-        // Seleciona a tabela e adiciona um evento de clique
         const tableRows = document.querySelectorAll("tbody tr");
         const popup = document.getElementById("popup");
+        const popupTitle = document.getElementById("popup-title");
         const popupText = document.getElementById("popup-text");
         const closePopup = document.getElementById("close-popup");
 
@@ -433,18 +457,17 @@
             row.addEventListener("click", () => {
                 const eventId = row.getAttribute("data-event");
                 if (eventContent[eventId]) {
+                    popupTitle.innerText = `Evento ${eventId}: ${row.cells[2].innerText}`;
                     popupText.innerHTML = eventContent[eventId];
                     popup.style.display = "flex";
                 }
             });
         });
 
-        // Fecha o pop-up ao clicar no botão de fechar
         closePopup.addEventListener("click", () => {
             popup.style.display = "none";
         });
 
-        // Fecha o pop-up ao clicar fora da área do conteúdo
         popup.addEventListener("click", (e) => {
             if (e.target === popup) {
                 popup.style.display = "none";
