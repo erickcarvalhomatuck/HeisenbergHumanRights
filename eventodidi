@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+
+        body {
+            background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .convite {
+            background: linear-gradient(to bottom, #f8f4e1, #e0c785);
+            border: 8px solid #c7a009;
+            border-radius: 15px;
+            padding: 40px;
+            width: 50%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            color: #145a32;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #2c241b;
+            margin-bottom: 25px;
+        }
+
+        .assinatura {
+            font-size: 20px;
+            font-weight: bold;
+            color: #145a32;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+
+        .contador {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c7a009;
+            background: rgba(20, 90, 50, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="convite">
+        <h1>Convite Especial</h1>
+        <p>Venho por meio deste convidar você para uma noite única no <strong>Teatro Renault</strong>, onde juntos faremos o seu sonho virar realidade. Se prepare... vai que você gosta. </p>
+        <p class="assinatura">Cordialmente, <br> Seu Veterano do Mal</p>
+        <p class="contador" id="contador"></p>
+    </div>
+
+    <script>
+        function atualizarContagem() {
+            const eventoData = new Date();
+            eventoData.setDate(eventoData.getDate() + (5 - eventoData.getDay())); // Próxima sexta-feira
+            eventoData.setHours(12, 0, 0, 0); // 12h
+
+            const agora = new Date();
+            const diferenca = eventoData - agora;
+
+            if (diferenca <= 0) {
+                document.getElementById("contador").innerHTML = "O momento chegou!";
+                return;
+            }
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById("contador").innerHTML = 
+                `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+            setTimeout(atualizarContagem, 1000);
+        }
+
+        atualizarContagem();
+    </script>
+</body>
+</html>
